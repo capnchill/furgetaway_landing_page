@@ -1,170 +1,1780 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./output.css" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="./assets/images/icons/logo.png" />
+    <title>Furgetaway | India's Largest & Safest Pet-Travel Tribe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-color: #fffdf9;
+        --white: #ffffff;
+        --primary-orange: #ff5c00;
+        --primary-vibrant: #ff3d00;
+        --accent-teal: #00acc1;
+        --accent-yellow: #ffb800;
+        --dark: #1a1d23;
+        --text-muted: #475569;
+        --brutal-shadow: 8px 8px 0px 0px var(--dark);
+        --brutal-shadow-small: 4px 4px 0px 0px var(--dark);
+        --card-radius: 24px;
+        --font-main: "Plus Jakarta Sans", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        /* Section 1.1: Custom SVG pattern with randomized, black-and-white pet emojis */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cg style='filter: grayscale(1); opacity: 0.08;'%3E%3Ctext x='50' y='80' font-size='30' transform='rotate(-15 50,80)'%3E🐈%3C/text%3E%3Ctext x='250' y='60' font-size='28' transform='rotate(22 250,60)'%3E🦴%3C/text%3E%3Ctext x='120' y='200' font-size='35' transform='rotate(-5 120,200)'%3E🐩%3C/text%3E%3Ctext x='320' y='180' font-size='24' transform='rotate(40 320,180)'%3E🐶%3C/text%3E%3Ctext x='60' y='320' font-size='32' transform='rotate(18 60,320)'%3E🐕%3C/text%3E%3Ctext x='280' y='350' font-size='26' transform='rotate(-25 280,350)'%3E🐱%3C/text%3E%3Ctext x='180' y='100' font-size='22' transform='rotate(10 180,100)'%3E🐾%3C/text%3E%3Ctext x='190' y='300' font-size='34' transform='rotate(-12 190,300)'%3E🦴%3C/text%3E%3C/g%3E%3C/svg%3E");
+        color: var(--dark);
+        font-family: var(--font-main);
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Section 2: Navigation */
+      nav {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        padding: 1.5rem 0;
+        transition: all 0.3s ease;
+      }
+
+      nav.scrolled {
+        background: rgba(255, 253, 249, 0.85);
+        backdrop-filter: blur(8px);
+        padding: 1rem 0;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 900;
+        font-size: 1.5rem;
+        letter-spacing: -0.02em;
+      }
+
+      .logo-icon {
+        background: var(--primary-orange);
+        color: white;
+        padding: 0.5rem;
+        border-radius: 12px;
+        transform: rotate(-5deg);
+      }
+
+      .nav-links {
+        display: none;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      @media (min-width: 1024px) {
+        .nav-links {
+          display: flex;
+        }
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 800;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .btn-join {
+        background: var(--accent-yellow);
+        color: var(--dark);
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 900;
+        border: 3px solid var(--dark);
+        box-shadow: var(--brutal-shadow-small);
+        transition: all 0.2s;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.9rem;
+      }
+
+      .btn-join:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0px 0px var(--dark);
+      }
+
+      /* Section 3: Hero */
+      .hero {
+        padding-top: 8rem;
+        padding-bottom: 6rem;
+        position: relative;
+      }
+
+      .hero-layout {
+        display: grid;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      @media (min-width: 1024px) {
+        .hero-layout {
+          grid-template-columns: 1.2fr 0.8fr;
+        }
+      }
+
+      .hero-content h1 {
+        font-size: 4.5rem;
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.04em;
+      }
+
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 3rem;
+        }
+      }
+
+      .hero-content h1 span {
+        color: var(--primary-orange);
+        background: var(--accent-yellow);
+        padding: 0 10px;
+        border-radius: 8px;
+        display: inline-block;
+        transform: rotate(-2deg);
+      }
+
+      .hero-content p {
+        font-size: 1.3rem;
+        color: var(--dark);
+        max-width: 520px;
+        margin-bottom: 3rem;
+        font-weight: 600;
+        line-height: 1.6;
+      }
+
+      /* Safety Highlights Tag */
+      .safety-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--accent-teal);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Section 4: Happiness Reel / Manual Masonry Carousel */
+      .happiness-section {
+        padding: 6rem 0 3rem;
+        margin-top: -6rem;
+        margin-bottom: 0;
+        position: relative;
+        z-index: 10;
+      }
+
+      .carousel-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 100vw;
+        margin: 0 auto;
+      }
+
+      .photo-carousel {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        overflow-x: auto;
+        padding: 1rem 1.5rem 2rem 1.5rem;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-behavior: smooth;
+      }
+
+      .photo-carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .photo-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        scroll-snap-align: start;
+        flex: none;
+      }
+
+      @media (min-width: 768px) {
+        .photo-carousel {
+          gap: 2rem;
+          padding: 1rem 2rem 2rem 2rem;
+        }
+        .photo-column {
+          gap: 2rem;
+        }
+      }
+
+      .photo-card {
+        flex: none;
+        width: 280px;
+        background: var(--white);
+        border-radius: 24px;
+        position: relative;
+        overflow: hidden;
+        border: none;
+        box-shadow: none;
+        cursor: pointer;
+        display: block;
+      }
+
+      @media (min-width: 768px) {
+        .photo-card {
+          width: 320px;
+        }
+      }
+
+      .photo-card img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        opacity: 0.95;
+        transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
+      }
+
+      .photo-card:hover img {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+
+      /* Carousel Navigation Buttons - Keeping the brutalist style on buttons */
+      .scroll-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--white);
+        color: var(--dark);
+        border: 3px solid var(--dark);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 20;
+        box-shadow: 4px 4px 0px 0px var(--dark);
+        transition: all 0.2s ease;
+      }
+
+      .scroll-btn:hover {
+        transform: translateY(-50%) translate(-2px, -2px);
+        box-shadow: 6px 6px 0px 0px var(--dark);
+        background: var(--accent-yellow);
+      }
+
+      .left-btn {
+        left: 0.5rem;
+      }
+      .right-btn {
+        right: 0.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .left-btn {
+          left: 2rem;
+          width: 56px;
+          height: 56px;
+        }
+        .right-btn {
+          right: 2rem;
+          width: 56px;
+          height: 56px;
+        }
+      }
+
+      /* Section 5: The Furgetaway Way (Step Cards) */
+      .steps-grid {
+        display: grid;
+        gap: 3rem;
+        margin-top: 5rem;
+      }
+      @media (min-width: 1024px) {
+        .steps-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .step-card {
+        padding: 3.5rem 2.5rem;
+        background: var(--white);
+        border-radius: var(--card-radius);
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .step-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .step-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--primary-orange);
+        color: white;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 2.5rem;
+      }
+
+      /* Section 6: Upcoming Drops Cards */
+      .dest-card {
+        background: var(--white);
+        border-radius: var(--card-radius);
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease;
+        position: relative;
+      }
+
+      .dest-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .dest-tag {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        background: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+
+      /* Section 8: Testimonials Styling */
+      .testimonials-section {
+        padding: 8rem 0;
+        margin-top: 4rem;
+      }
+
+      .pawmonial-layout {
+        display: grid;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      @media (min-width: 992px) {
+        .pawmonial-layout {
+          grid-template-columns: 1.1fr 0.9fr;
+        }
+      }
+
+      .pawmonial-main-img-container {
+        width: 100%;
+        height: 450px;
+        border-radius: 24px;
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      .pawmonial-main-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+      }
+
+      .pawmonial-thumbs {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .paw-thumb {
+        width: 80px;
+        height: 80px;
+        border: 4px solid transparent;
+        border-radius: 16px;
+        cursor: pointer;
+        object-fit: cover;
+        transition: all 0.2s;
+        opacity: 0.6;
+      }
+
+      .paw-thumb:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .paw-thumb.active {
+        border-color: var(--primary-orange);
+        opacity: 1;
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .handwriting-style {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        font-size: 1.8rem;
+        transform: rotate(-2deg);
+        margin-bottom: 1rem;
+        color: var(--dark);
+      }
+
+      .paw-author-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        margin-top: 2rem;
+      }
+
+      .paw-avatar {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      /* General Typography Utility */
+      .section-title {
+        font-size: 3.5rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+      .section-subtitle {
+        font-size: 1.2rem;
+        font-weight: 900;
+        color: var(--primary-orange);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Image Mask for Hero/Collage */
+      .brutal-img-wrapper {
+        position: relative;
+        border-radius: 40px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Footer legal bar */
+      .footer-legal {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 4px solid var(--dark);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .footer-legal-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .footer-legal-links a,
+      .footer-legal-about a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 900;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 2px solid transparent;
+        transition:
+          border-color 0.2s ease,
+          color 0.2s ease;
+      }
+
+      .footer-legal-links a:hover,
+      .footer-legal-about a:hover {
+        color: var(--primary-orange);
+        border-bottom-color: var(--accent-yellow);
+      }
+
+      .footer-legal-copy {
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        color: var(--dark);
+        text-align: center;
+        flex: 1 1 100%;
+        margin-top: 0.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .footer-legal-copy {
+          flex: unset;
+          margin-top: 0;
+          text-align: right;
+        }
+      }
+    </style>
   </head>
-
-  <body class="md:w-3/4 w-5/6 mx-auto">
-    <header class="p-4 flex items-center justify-between">
-      <div>
-        <img
-          src="./assets/images/icons/logo.png"
-          alt="furgetaway logo"
-          class="h-20 w-20 aspect-square mx-auto"
-        />
+  <body>
+    <nav id="navbar">
+      <div class="container nav-content">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+              <path d="M12 13v5" />
+              <path d="m16 8-2 2" />
+              <path d="m8 8 2 2" />
+            </svg>
+          </div>
+          Furgetaway
+        </a>
+        <div class="nav-links">
+          <a href="#drops" class="nav-link">Our latest trip drops</a>
+          <a href="#voices" class="nav-link">Testimonials</a>
+          <a
+            href="https://chat.whatsapp.com/F2Uuk973INuE38rANImhVV"
+            target="_blank"
+            class="btn-join"
+            >Join the Community</a
+          >
+        </div>
       </div>
+    </nav>
 
-      <a href="https://chat.whatsapp.com/DkEgN0ZfNUrHNDiFoWPVF5"
-        ><img src="./assets/images/icons/telegram.svg" alt="Join our community"
-      /></a>
+    <header class="hero">
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <div class="safety-tag">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+            </svg>
+            India's Largest and Safest Travel Community
+          </div>
+          <h1>All memories are better with your <br /><span>Furbaby.</span></h1>
+          <p>
+            Furgetaway is a 20K+ pet parent community traveling together,
+            supporting each other, and creating unforgettable memories with
+            their Furbabies.
+          </p>
+        </div>
+
+        <div style="position: relative">
+          <div class="brutal-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=800"
+              alt="Community Collage Placeholder"
+              style="
+                width: 100%;
+                aspect-ratio: 15/16;
+                object-fit: cover;
+                display: block;
+              "
+            />
+          </div>
+          <div
+            style="
+              position: absolute;
+              bottom: -1.5rem;
+              left: 1.5rem;
+              background: var(--accent-yellow);
+              padding: 1.5rem;
+              border-radius: 16px;
+              box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              transform: rotate(-3deg);
+              z-index: 20;
+            "
+          >
+            <div
+              style="
+                background: var(--dark);
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 8px;
+                font-weight: 900;
+                font-size: 1.2rem;
+              "
+            >
+              50K+
+            </div>
+            <div style="font-weight: 800; font-size: 0.95rem; line-height: 1.2">
+              miles covered <br />and counting.
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <main>
-      <h1 class="text-4xl md:text-6xl text-center font-bold">
-        Planned Adventures <br />
-        For Your Furry Friend <br />
-        And You
-      </h1>
+    <!-- Section 4: Happiness Reel -->
+    <section id="happiness" class="happiness-section">
+      <div class="container">
+        <div style="margin-bottom: 4rem; text-align: center">
+          <h2 class="section-title" style="color: var(--dark)">
+            Happiness in Motion
+          </h2>
+          <p
+            style="
+              color: var(--primary-orange);
+              font-weight: 800;
+              font-size: 1.2rem;
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+            "
+          >
+            Real stories. No filters. Just wagging tails.
+          </p>
+        </div>
+      </div>
 
-      <div class="text-center my-8">
+      <div class="carousel-wrapper">
+        <button
+          id="scroll-left"
+          class="scroll-btn left-btn"
+          aria-label="Scroll left"
+        >
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
+
+        <div id="photo-carousel" class="photo-carousel">
+          <div class="photo-column">
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=400&h=340"
+                alt="Pet adventure"
+              />
+            </div>
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=400&h=240"
+                alt="Pet adventure"
+              />
+            </div>
+          </div>
+          <!-- <div class="photo-column">
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1541364983171-a8ba01d95cfc?auto=format&fit=crop&q=80&w=400&h=240"
+                alt="Pet adventure"
+              />
+            </div>
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1551730459-92db2a308d6a?auto=format&fit=crop&q=80&w=400&h=410"
+                alt="Pet adventure"
+              />
+            </div>
+          </div> -->
+          <div class="photo-column">
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&q=80&w=400&h=310"
+                alt="Pet adventure"
+              />
+            </div>
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&q=80&w=400&h=270"
+                alt="Pet adventure"
+              />
+            </div>
+          </div>
+          <div class="photo-column">
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Pet adventure"
+              />
+            </div>
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?auto=format&fit=crop&q=80&w=400&h=240"
+                alt="Pet adventure"
+              />
+            </div>
+          </div>
+          <div class="photo-column">
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&q=80&w=400&h=270"
+                alt="Pet adventure"
+              />
+            </div>
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&q=80&w=400&h=310"
+                alt="Pet adventure"
+              />
+            </div>
+          </div>
+          <!-- Duplicate Columns for length -->
+          <div class="photo-column">
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=400&h=340"
+                alt="Pet adventure"
+              />
+            </div>
+            <div class="photo-card">
+              <img
+                src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=400&h=240"
+                alt="Pet adventure"
+              />
+            </div>
+          </div>
+        </div>
+
+        <button
+          id="scroll-right"
+          class="scroll-btn right-btn"
+          aria-label="Scroll right"
+        >
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Section 5: The Furgetaway Way -->
+    <section id="cycle" class="container" style="padding: 3rem 0 8rem">
+      <div style="text-align: center">
+        <p class="section-subtitle">Our trips happen in limited drops</p>
+        <h2 class="section-title">The Furgetaway Way</h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3 style="font-weight: 900; margin-bottom: 1rem; font-size: 1.6rem">
+            1. Secure Your Spot
+          </h3>
+          <p style="font-weight: 600; color: var(--text-muted)">
+            Join the 20,000+ tribe. Verified members get the early signals for
+            every upcoming drop.
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon" style="background: var(--accent-teal)">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <path
+                d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5 a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"
+              />
+            </svg>
+          </div>
+          <h3 style="font-weight: 900; margin-bottom: 1rem; font-size: 1.6rem">
+            2. Watch the Signals
+          </h3>
+          <p style="font-weight: 600; color: var(--text-muted)">
+            Drops happen without warning. We broadcast to the Tribe when a new
+            destination is ready.
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon" style="background: var(--accent-yellow)">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <path d="m12 19 7-7 3 3-7 7-3-3z" />
+              <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+              <path d="m2 2 20 20" />
+            </svg>
+          </div>
+          <h3 style="font-weight: 900; margin-bottom: 1rem; font-size: 1.6rem">
+            3. Claim the Drop
+          </h3>
+          <p style="font-weight: 600; color: var(--text-muted)">
+            Limited slots. Unlimited memories. Book instantly and pack your
+            pet's bags!
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 4rem">
         <a
-          href="https://wa.me/919211015573"
-          class="text-white bg-red-600/90 border-0 px-12 py-4 focus:outline-none hover:bg-red-400 rounded-full text-lg"
-          >Book Your Adventure Now</a
+          href="https://chat.whatsapp.com/F2Uuk973INuE38rANImhVV"
+          target="_blank"
+          class="btn-join"
+          style="display: inline-block; font-size: 1.1rem; padding: 1rem 2rem"
+          >Join The Furgetaway Community</a
         >
       </div>
+    </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        <img
-          src="./assets/images/homepage/retriever.png"
-          alt="Happy golden retriever"
-          class="aspect-square w-full max-w-md mx-auto object-cover rounded-lg"
-          width="384"
-          height="384"
-          loading="lazy"
-        />
-        <img
-          src="./assets/images/homepage/cat.png"
-          alt="Elegant cat posing"
-          class="aspect-square w-full max-w-md mx-auto object-cover rounded-lg hidden md:block"
-          width="384"
-          height="384"
-          loading="lazy"
-        />
-        <img
-          src="./assets/images/homepage/beagle.png"
-          alt="Playful beagle"
-          class="aspect-square w-full max-w-md mx-auto object-cover rounded-lg hidden md:block"
-          width="384"
-          height="384"
-          loading="lazy"
-        />
+    <!-- Section 6: Current Drops -->
+    <section id="drops" class="container" style="padding-bottom: 8rem">
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          margin-bottom: 4rem;
+        "
+      >
+        <div>
+          <p class="section-subtitle">Live Now</p>
+          <h2 class="section-title">Current Drops</h2>
+        </div>
+        <button
+          id="toggleDropsBtn"
+          style="
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary-orange);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: inherit;
+            font-size: 1rem;
+            border-bottom: 4px solid var(--accent-yellow);
+          "
+        >
+          View More &darr;
+        </button>
       </div>
 
-      <section class="my-16">
-        <div
-          class="flex flex-col md:flex-row justify-center items-center gap-4"
+      <div class="steps-grid" style="margin-top: 0" id="dropsGrid">
+        <div class="dest-card">
+          <span class="dest-tag" style="color: var(--primary-orange)"
+            >Mountain Drop</span
+          >
+          <img
+            src="https://images.unsplash.com/photo-1653844573020-71f77a0ccb8c?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            style="
+              width: 100%;
+              height: 250px;
+              object-fit: cover;
+              display: block;
+            "
+            alt="Spiti"
+          />
+          <div style="padding: 2rem">
+            <h3
+              style="font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem"
+            >
+              Spiti Roadtrip
+            </h3>
+            <p
+              style="
+                color: var(--dark);
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Secure valleys and high-altitude bonding experiences.
+            </p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: 800;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+              "
+            >
+              <svg
+                width="18"
+                height="18"
+                fill="none"
+                stroke="var(--primary-orange)"
+                stroke-width="3"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Himachal Pradesh
+            </div>
+          </div>
+        </div>
+        <div class="dest-card">
+          <span class="dest-tag" style="color: var(--accent-teal)"
+            >Lakeside Drop</span
+          >
+          <img
+            src="https://images.unsplash.com/photo-1663128687086-995ac1a9cea6?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            style="
+              width: 100%;
+              height: 250px;
+              object-fit: cover;
+              display: block;
+            "
+            alt="Bhimtal"
+          />
+          <div style="padding: 2rem">
+            <h3
+              style="font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem"
+            >
+              Bhimtal Retreat
+            </h3>
+            <p
+              style="
+                color: var(--dark);
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Serene strolls and vet-on-call proximity.
+            </p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: 800;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+              "
+            >
+              <svg
+                width="18"
+                height="18"
+                fill="none"
+                stroke="var(--accent-teal)"
+                stroke-width="3"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Uttarakhand
+            </div>
+          </div>
+        </div>
+        <div class="dest-card">
+          <span class="dest-tag" style="color: var(--accent-yellow)"
+            >Forest Drop</span
+          >
+          <img
+            src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&q=80&w=800"
+            style="
+              width: 100%;
+              height: 250px;
+              object-fit: cover;
+              display: block;
+            "
+            alt="Kasauli"
+          />
+          <div style="padding: 2rem">
+            <h3
+              style="font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem"
+            >
+              Kasauli Pines
+            </h3>
+            <p
+              style="
+                color: var(--dark);
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Gated community stays with safe hiking trails.
+            </p>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: 800;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+              "
+            >
+              <svg
+                width="18"
+                height="18"
+                fill="none"
+                stroke="var(--accent-yellow)"
+                stroke-width="3"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Himachal Pradesh
+            </div>
+          </div>
+        </div>
+        <!-- Hidden Drops -->
+        <div class="dest-card extra-drop" style="display: none">
+          <span class="dest-tag" style="color: var(--primary-orange)"
+            >Beach Drop</span
+          >
+          <img
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800"
+            style="
+              width: 100%;
+              height: 250px;
+              object-fit: cover;
+              display: block;
+            "
+            alt="Goa"
+          />
+          <div style="padding: 2rem">
+            <h3
+              style="font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem"
+            >
+              Goa Coastline
+            </h3>
+            <p
+              style="
+                color: var(--dark);
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Sandy paws and sunset runs.
+            </p>
+          </div>
+        </div>
+        <div class="dest-card extra-drop" style="display: none">
+          <span class="dest-tag" style="color: var(--accent-teal)"
+            >Desert Drop</span
+          >
+          <img
+            src="https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?auto=format&fit=crop&q=80&w=800"
+            style="
+              width: 100%;
+              height: 250px;
+              object-fit: cover;
+              display: block;
+            "
+            alt="Pushkar"
+          />
+          <div style="padding: 2rem">
+            <h3
+              style="font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem"
+            >
+              Pushkar Oasis
+            </h3>
+            <p
+              style="
+                color: var(--dark);
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Royal luxury and open spaces.
+            </p>
+          </div>
+        </div>
+        <div class="dest-card extra-drop" style="display: none">
+          <span class="dest-tag" style="color: var(--accent-yellow)"
+            >Jungle Drop</span
+          >
+          <img
+            src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=80&w=800"
+            style="
+              width: 100%;
+              height: 250px;
+              object-fit: cover;
+              display: block;
+            "
+            alt="Kabini"
+          />
+          <div style="padding: 2rem">
+            <h3
+              style="font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem"
+            >
+              Kabini Woods
+            </h3>
+            <p
+              style="
+                color: var(--dark);
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Backwater safe wilderness.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 4rem">
+        <a
+          href="https://wa.me/9211015573"
+          target="_blank"
+          class="btn-join"
+          style="
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--accent-teal);
+            color: white;
+            padding: 1.25rem 2.5rem;
+            font-size: 1.1rem;
+            border-color: var(--dark);
+          "
         >
-          <a
-            href="https://chat.whatsapp.com/DkEgN0ZfNUrHNDiFoWPVF5"
-            class="flex items-center gap-4 px-6 py-3 rounded-xl bg-red-100 hover:bg-red-200 transition-colors w-full md:w-auto"
-          >
-            <img
-              src="./assets/images/icons/telegram.svg"
-              alt=""
-              class="w-10 h-10 bg-white rounded-full p-2"
-              width="48"
-              height="48"
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12.031 6.172c-2.32 0-4.591 1.042-4.591 3.226 0 1.967 2.053 3.328 4.591 3.328 2.538 0 4.591-1.361 4.591-3.328 0-2.184-2.271-3.226-4.591-3.226zm7.904 4.195c-.328 4.417-4.148 7.917-8.814 7.917-1.125 0-2.208-.22-3.21-.62l-3.326.892.935-3.22c-.676-1.104-1.071-2.404-1.071-3.79 0-4.666 3.82-8.487 8.486-8.487s8.487 3.821 8.487 8.487c0 1.48-.38 2.87-1.042 4.086l.555.245z"
             />
-            <span class="font-semibold">Join our community</span>
-          </a>
+          </svg>
+          Submit enquiry for these drops
+        </a>
+      </div>
+    </section>
 
-          <a
-            href="https://www.instagram.com/furgetaway?igsh=bjVoN2g0MDE4dDBr&utm_source=qr"
-            class="flex items-center gap-4 px-6 py-3 rounded-xl bg-orange-100 hover:bg-orange-200 transition-colors w-full md:w-auto"
+    <!-- Section 7: Safety Banner -->
+    <section id="safety" class="container" style="padding: 4rem 0 8rem">
+      <div
+        style="
+          background: var(--white);
+          color: var(--dark);
+          border-radius: 40px;
+          padding: 5rem;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        "
+      >
+        <div style="text-align: center; max-width: 1000px; margin: 0 auto">
+          <div
+            style="
+              display: inline-block;
+              background: var(--accent-teal);
+              color: white;
+              font-weight: 900;
+              text-transform: uppercase;
+              letter-spacing: 0.1em;
+              padding: 0.5rem 1rem;
+              border-radius: 8px;
+              margin-bottom: 1.5rem;
+              transform: rotate(-2deg);
+            "
           >
-            <img
-              src="./assets/images/icons/instagram.svg"
-              alt=""
-              class="w-10 h-10 bg-white rounded-full p-2"
-              width="48"
-              height="48"
-            />
-            <span class="font-semibold">Follow us on Instagram</span>
-          </a>
-
-          <a
-            href="https://wa.me/919211015573"
-            class="flex items-center gap-4 px-6 py-3 rounded-xl bg-blue-100 hover:bg-blue-200 transition-colors w-full md:w-auto"
+            Zero Compromise
+          </div>
+          <h2
+            style="
+              font-size: 3.5rem;
+              font-weight: 900;
+              margin-bottom: 3rem;
+              line-height: 1.1;
+            "
           >
-            <img
-              src="./assets/images/icons/whatsapp.svg"
-              alt=""
-              class="w-10 h-10 bg-white rounded-full p-2"
-              width="48"
-              height="48"
-            />
-            <span class="font-semibold">Reach us on WhatsApp</span>
-          </a>
+            Safety isn't a feature. <br />It's our baseline.
+          </h2>
+          <div
+            style="
+              display: grid;
+              gap: 3rem;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              text-align: left;
+              margin-top: 3rem;
+            "
+          >
+            <div>
+              <div style="font-size: 2.5rem; margin-bottom: 1rem">🚑</div>
+              <h4
+                style="
+                  font-weight: 900;
+                  font-size: 1.2rem;
+                  margin-bottom: 0.5rem;
+                  color: var(--accent-teal);
+                "
+              >
+                Support Network
+              </h4>
+              <p style="font-weight: 600; opacity: 0.9; line-height: 1.4">
+                24/7 Vet-on-call and Local Vet contacts for every location.
+              </p>
+            </div>
+            <div>
+              <div style="font-size: 2.5rem; margin-bottom: 1rem">🏠</div>
+              <h4
+                style="
+                  font-weight: 900;
+                  font-size: 1.2rem;
+                  margin-bottom: 0.5rem;
+                  color: var(--accent-yellow);
+                "
+              >
+                Verified Properties
+              </h4>
+              <p style="font-weight: 600; opacity: 0.9; line-height: 1.4">
+                Furgetaway verified properties, pet-proofed and scouted.
+              </p>
+            </div>
+            <div>
+              <div style="font-size: 2.5rem; margin-bottom: 1rem">🚐</div>
+              <h4
+                style="
+                  font-weight: 900;
+                  font-size: 1.2rem;
+                  margin-bottom: 0.5rem;
+                  color: var(--primary-orange);
+                "
+              >
+                Verified Vehicles
+              </h4>
+              <p style="font-weight: 600; opacity: 0.9; line-height: 1.4">
+                Furgetaway Verified Vehicles designed for long-haul pet comfort.
+              </p>
+            </div>
+            <div>
+              <div style="font-size: 2.5rem; margin-bottom: 1rem">🔒</div>
+              <h4
+                style="
+                  font-weight: 900;
+                  font-size: 1.2rem;
+                  margin-bottom: 0.5rem;
+                  color: var(--accent-teal);
+                "
+              >
+                Secure Transit
+              </h4>
+              <p style="font-weight: 600; opacity: 0.9; line-height: 1.4">
+                Logistics mapped out to ensure zero-stress movement.
+              </p>
+            </div>
+            <div>
+              <div style="font-size: 2.5rem; margin-bottom: 1rem">⛑️</div>
+              <h4
+                style="
+                  font-weight: 900;
+                  font-size: 1.2rem;
+                  margin-bottom: 0.5rem;
+                  color: var(--accent-yellow);
+                "
+              >
+                Trained Expertise
+              </h4>
+              <p style="font-weight: 600; opacity: 0.9; line-height: 1.4">
+                CPR and First aid trained Staff with every group trip.
+              </p>
+            </div>
+            <div>
+              <div style="font-size: 2.5rem; margin-bottom: 1rem">🎒</div>
+              <h4
+                style="
+                  font-weight: 900;
+                  font-size: 1.2rem;
+                  margin-bottom: 0.5rem;
+                  color: var(--primary-orange);
+                "
+              >
+                Flexible Travel
+              </h4>
+              <p style="font-weight: 600; opacity: 0.9; line-height: 1.4">
+                Personalised and Group packages tailored to your pet's needs.
+              </p>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section>
-        <div class="hidden md:flex md:items-center md:justify-center">
-          <img src="./assets/images/homepage/paws.png" alt="paws" />
+    <!-- Section 8: Testimonials -->
+    <section id="voices" class="testimonials-section">
+      <div class="container">
+        <div class="pawmonial-layout">
+          <!-- Left Side: Interactive Image & Thumbs -->
+          <div class="pawmonial-left">
+            <div class="brutal-img-wrapper pawmonial-main-img-container">
+              <button
+                id="paw-prev"
+                class="scroll-btn left-btn"
+                style="z-index: 30"
+                aria-label="Previous Testimonial"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </button>
+
+              <img
+                id="paw-main-img"
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800"
+                alt="Testimonial Image"
+              />
+
+              <button
+                id="paw-next"
+                class="scroll-btn right-btn"
+                style="z-index: 30"
+                aria-label="Next Testimonial"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="pawmonial-thumbs" id="paw-thumbs">
+              <!-- Thumbs generated by JS -->
+            </div>
+          </div>
+
+          <!-- Right Side: Content -->
+          <div class="pawmonial-right">
+            <h2
+              class="section-title"
+              style="color: var(--primary-vibrant); font-size: 3rem"
+            >
+              Testimonials
+            </h2>
+            <p
+              style="
+                color: var(--text-muted);
+                font-weight: 600;
+                margin-bottom: 2rem;
+                font-size: 1.1rem;
+                line-height: 1.6;
+                max-width: 480px;
+              "
+            >
+              Here is what our pet parents have to say about our trip experience
+            </p>
+
+            <p
+              id="paw-text"
+              style="
+                font-size: 1.2rem;
+                font-weight: 700;
+                font-style: italic;
+                line-height: 1.7;
+                margin-bottom: 1.5rem;
+                color: var(--dark);
+              "
+            >
+              "Thank you so much for making this trip Memorable to us. They
+              fulfilled my Dream. Amazing and heart touching experience..."
+            </p>
+
+            <p
+              id="paw-insta"
+              style="
+                font-weight: 800;
+                color: var(--accent-teal);
+                margin-bottom: 1.5rem;
+                font-size: 1.1rem;
+              "
+            >
+              Check out @Coco_POM
+            </p>
+
+            <div class="paw-author-wrapper">
+              <img
+                id="paw-avatar"
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100"
+                class="paw-avatar"
+                alt="Author Avatar"
+              />
+              <div>
+                <div
+                  id="paw-name"
+                  style="
+                    font-weight: 900;
+                    font-size: 1.3rem;
+                    color: var(--dark);
+                  "
+                >
+                  Anjali
+                </div>
+                <div
+                  id="paw-location"
+                  style="
+                    font-size: 0.95rem;
+                    font-weight: 800;
+                    color: var(--primary-vibrant);
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                  "
+                >
+                  Kashmir
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
+    <!-- Section 10: Footer -->
+    <footer
+      style="
+        background: white;
+        padding: 6rem 0 3rem;
+        border-top: 1px solid #eaeaea;
+      "
+    >
+      <div class="container">
         <div
-          class="bg-red-600/80 rounded-3xl grid grid-cols-1 md:flex md:h-80 md:items-end md:justify-center md:gap-10 p-4 md-p-0"
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 4rem;
+          "
         >
           <div>
-            <img
-              src="./assets/images/homepage/terrier.png"
-              alt="fedora beagle"
-              class="md:w-[378px] md:h-[500px] hidden md:block"
-            />
-          </div>
-
-          <div class="text-center md:text-left">
-            <h2
-              class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight"
-            >
-              Adventure awaits for
-              <span class="block">pawsome explorers!</span>
-            </h2>
-
-            <a
-              href="https://wa.me/919211015573"
-              class="inline-block mt-8 px-8 py-4 border-2 border-white rounded-2xl font-semibold hover:bg-white hover:text-red-600 transition-colors"
-            >
-              Book Your Trip Now!
+            <a href="#" class="logo" style="margin-bottom: 1.5rem">
+              <div
+                class="logo-icon"
+                style="padding: 0.35rem; border-radius: 8px"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                  <path d="M12 13v5" />
+                  <path d="m16 8-2 2" />
+                  <path d="m8 8 2 2" />
+                </svg>
+              </div>
+              Furgetaway
             </a>
+            <p
+              style="
+                font-weight: 800;
+                color: var(--dark);
+                font-size: 1.1rem;
+                margin-top: 1rem;
+              "
+            >
+              Selling happiness,<br />one drop at a time.
+            </p>
+          </div>
+          <div>
+            <h4
+              style="
+                font-weight: 900;
+                margin-bottom: 1.5rem;
+                text-transform: uppercase;
+              "
+            >
+              Quick Links
+            </h4>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem">
+              <a href="#" class="nav-link">Upcoming Drops</a
+              ><a href="#" class="nav-link">Safety Protocol</a>
+            </div>
+          </div>
+          <div>
+            <h4
+              style="
+                font-weight: 900;
+                margin-bottom: 1.5rem;
+                text-transform: uppercase;
+              "
+            >
+              Follow the Tail
+            </h4>
+            <a
+              href="https://instagram.com/furgetaway"
+              target="_blank"
+              style="
+                text-decoration: none;
+                color: var(--primary-orange);
+                font-weight: 900;
+                font-size: 1.4rem;
+                border-bottom: 4px solid var(--dark);
+              "
+              >Instagram →</a
+            >
           </div>
         </div>
-      </section>
-    </main>
-    <footer class="text-center mt-10 border-t-2 pt-4">
-      <div class="flex justify-center items-center gap-8 mb-4">
-        <p>
-          <a href="./terms.html" class="hover:underline hover:text-blue-500"
-            >Terms &amp; conditions</a
-          >
-        </p>
-        <p>
-          <a href="./policy.html" class="hover:underline hover:text-blue-500"
-            >Privacy Policy</a
-          >
-        </p>
+        <!-- Legal bar -->
+        <div class="footer-legal">
+          <div class="footer-legal-links">
+            <a href="./terms.html" target="_blank" rel="noopener noreferrer">
+              Terms &amp; Conditions
+            </a>
+            <a href="./policy.html" target="_blank" rel="noopener noreferrer">
+              Privacy Policy
+            </a>
+            <a href="./about-us.html" target="_blank" rel="noopener noreferrer">
+              About Us
+            </a>
+          </div>
+          <p class="footer-legal-copy">
+            &copy; <span id="year"></span>, All Rights Reserved by OTR Voyages
+            Pvt. Ltd.
+          </p>
+        </div>
       </div>
-      <div class="mb-4">
-        <a href="./about-us.html" class="hover:underline hover:text-blue-500"
-          >About Us</a
-        >
-      </div>
-      <p>&copy; 2024, All Rights Reserved by OTR Voyages Pvt. Ltd.</p>
     </footer>
+
+    <script>
+      // Navbar Scroll
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Happiness Reel Carousel
+      const carousel = document.getElementById("photo-carousel");
+      const leftBtn = document.getElementById("scroll-left");
+      const rightBtn = document.getElementById("scroll-right");
+      if (leftBtn && rightBtn && carousel) {
+        leftBtn.addEventListener("click", () =>
+          carousel.scrollBy({ left: -352, behavior: "smooth" }),
+        );
+        rightBtn.addEventListener("click", () =>
+          carousel.scrollBy({ left: 352, behavior: "smooth" }),
+        );
+      }
+
+      // Drops Expander
+      const toggleDropsBtn = document.getElementById("toggleDropsBtn");
+      const extraDrops = document.querySelectorAll(".extra-drop");
+      let dropsExpanded = false;
+      if (toggleDropsBtn) {
+        toggleDropsBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          dropsExpanded = !dropsExpanded;
+          extraDrops.forEach(
+            (drop) => (drop.style.display = dropsExpanded ? "block" : "none"),
+          );
+          toggleDropsBtn.innerHTML = dropsExpanded
+            ? "View Less &uarr;"
+            : "View More &darr;";
+        });
+      }
+
+      // Pawmonials Logic
+      const pawmonialsData = [
+        {
+          image:
+            "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80&w=800",
+          text: "Thank you so much for making this trip Memorable to us. They fulfilled my Dream. Amazing and heart touching experience with the team. Polite and supportive at every step and the best part was whenever we had any problem you were always available to help.. I HIGHLY RECOMMEND without a single doubt.",
+          insta: "Check out @Coco_POM",
+          name: "Anjali",
+          location: "Kashmir",
+          avatar:
+            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100",
+        },
+        {
+          image:
+            "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=800",
+          text: "Traveling to Spiti with a large dog was always a nightmare until Furgetaway. The safety checks and the 'zero judgment' host made all the difference. Simba had the time of his life playing in the snow, and we had absolute peace of mind.",
+          insta: "Check out @Simba_The_Golden",
+          name: "Rahul & Simba",
+          location: "Spiti Valley",
+          avatar:
+            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100",
+        },
+        {
+          image:
+            "https://images.unsplash.com/photo-1534361960057-19889db9621e?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          text: "Furgetaway isn't just about booking a stay; it's a movement. We felt 100% safe knowing there was a vet on call and a tribe of other pet parents. Luna made so many new friends on the trails!",
+          insta: "Check out @Luna_Explores",
+          name: "Priya & Luna",
+          location: "Kasauli",
+          avatar:
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100",
+        },
+        {
+          image:
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800",
+          text: "Never thought taking two indies to the beach would be this stress-free. The property was fully fenced, the transport was smooth, and the staff actually loved dogs. Will only travel with Furgetaway now.",
+          insta: "Check out @Indie_Duo_Goa",
+          name: "Kabir",
+          location: "Goa",
+          avatar:
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100",
+        },
+      ];
+
+      let currentPawIndex = 0;
+
+      const elMainImg = document.getElementById("paw-main-img");
+      const elText = document.getElementById("paw-text");
+      const elInsta = document.getElementById("paw-insta");
+      const elName = document.getElementById("paw-name");
+      const elLocation = document.getElementById("paw-location");
+      const elAvatar = document.getElementById("paw-avatar");
+      const elThumbsContainer = document.getElementById("paw-thumbs");
+
+      function renderPawmonial(index) {
+        const data = pawmonialsData[index];
+        elMainImg.src = data.image;
+        elText.innerText = `"${data.text}"`;
+        elInsta.innerText = data.insta;
+        elName.innerText = data.name;
+        elLocation.innerText = data.location;
+        elAvatar.src = data.avatar;
+
+        // Update thumb active state
+        document.querySelectorAll(".paw-thumb").forEach((thumb, i) => {
+          if (i === index) thumb.classList.add("active");
+          else thumb.classList.remove("active");
+        });
+      }
+
+      function initPawmonials() {
+        // Generate thumbs
+        pawmonialsData.forEach((item, index) => {
+          const img = document.createElement("img");
+          img.src = item.image;
+          img.className = "paw-thumb";
+          if (index === 0) img.classList.add("active");
+
+          img.addEventListener("click", () => {
+            currentPawIndex = index;
+            renderPawmonial(currentPawIndex);
+          });
+
+          elThumbsContainer.appendChild(img);
+        });
+
+        // Init arrows
+        document.getElementById("paw-prev").addEventListener("click", () => {
+          currentPawIndex =
+            (currentPawIndex - 1 + pawmonialsData.length) %
+            pawmonialsData.length;
+          renderPawmonial(currentPawIndex);
+        });
+
+        document.getElementById("paw-next").addEventListener("click", () => {
+          currentPawIndex = (currentPawIndex + 1) % pawmonialsData.length;
+          renderPawmonial(currentPawIndex);
+        });
+
+        // First render
+        renderPawmonial(0);
+      }
+
+      // Initialize if container exists
+      if (document.getElementById("paw-main-img")) {
+        initPawmonials();
+      }
+    </script>
   </body>
 </html>
