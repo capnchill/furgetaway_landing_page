@@ -83,11 +83,20 @@
       }
 
       .logo-icon {
-        background: var(--primary-orange);
+        /* background: var(--primary-orange);
         color: white;
         padding: 0.5rem;
         border-radius: 12px;
-        transform: rotate(-5deg);
+        transform: rotate(-5deg); */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo-icon img {
+        width: 2em;
+        height: 2em;
+        object-fit: contain;
       }
 
       .nav-links {
@@ -561,6 +570,23 @@
           text-align: right;
         }
       }
+
+      @media (max-width: 1023px) {
+        .nav-content .btn-join {
+          padding: 0.4rem 0.75rem;
+          font-size: 0.7rem;
+          box-shadow: 3px 3px 0px 0px var(--dark);
+        }
+
+        .logo {
+          font-size: 1.1rem;
+        }
+
+        .logo-icon img {
+          width: 1.5em;
+          height: 1.5em;
+        }
+      }
     </style>
   </head>
   <body>
@@ -568,34 +594,23 @@
       <div class="container nav-content">
         <a href="#" class="logo">
           <div class="logo-icon">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
-              <path d="M12 13v5" />
-              <path d="m16 8-2 2" />
-              <path d="m8 8 2 2" />
-            </svg>
+            <img
+              src="./assets/images/homepage/furgetaway logo -2.png"
+              alt="Furgetaway Logo"
+            />
           </div>
           Furgetaway
         </a>
         <div class="nav-links">
           <a href="#drops" class="nav-link">Our latest trip drops</a>
           <a href="#voices" class="nav-link">Testimonials</a>
-          <a
-            href="https://chat.whatsapp.com/F2Uuk973INuE38rANImhVV"
-            target="_blank"
-            class="btn-join"
-            >Join the Community</a
-          >
         </div>
+        <a
+          href="https://chat.whatsapp.com/F2Uuk973INuE38rANImhVV"
+          target="_blank"
+          class="btn-join"
+          >Join the Community</a
+        >
       </div>
     </nav>
 
